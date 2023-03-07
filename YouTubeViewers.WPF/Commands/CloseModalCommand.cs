@@ -1,5 +1,4 @@
-﻿using System;
-using YouTubeViewers.WPF.Stores;
+﻿using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.Commands
 {

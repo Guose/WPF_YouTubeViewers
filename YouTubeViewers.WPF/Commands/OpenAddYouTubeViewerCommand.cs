@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Input;
-using YouTubeViewers.WPF.Stores;
+﻿using YouTubeViewers.WPF.Stores;
 using YouTubeViewers.WPF.ViewModels;
 
 namespace YouTubeViewers.WPF.Commands

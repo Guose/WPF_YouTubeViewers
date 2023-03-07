@@ -1,5 +1,4 @@
-﻿using System;
-using YouTubeViewers.WPF.Models;
+﻿using YouTubeViewers.WPF.Models;
 using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.ViewModels
@@ -7,7 +6,7 @@ namespace YouTubeViewers.WPF.ViewModels
     internal class YouTubeViewersDetailsViewModel : ViewModelBase
     {
         private readonly SelectedYouTubeViewerStore _selectedYouTubeViewerStore;
-        private YouTubeViewer SelectedYouTubeViewer => _selectedYouTubeViewerStore.SelectedYouTubeViewer;
+        private YouTubeViewer? SelectedYouTubeViewer => _selectedYouTubeViewerStore?.SelectedYouTubeViewer;
 
         public bool HasSelectedViewer => SelectedYouTubeViewer != null;
         public string Username => SelectedYouTubeViewer == null ? "Unknown" : SelectedYouTubeViewer.Username;
