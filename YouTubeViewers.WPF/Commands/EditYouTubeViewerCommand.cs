@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using YouTubeViewers.WPF.Models;
+using YouTubeViewers.Domain.Models;
 using YouTubeViewers.WPF.Stores;
 using YouTubeViewers.WPF.ViewModels;
 

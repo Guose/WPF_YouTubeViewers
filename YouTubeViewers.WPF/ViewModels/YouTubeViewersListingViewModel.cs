@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using YouTubeViewers.WPF.Commands;
-using YouTubeViewers.WPF.Models;
+using YouTubeViewers.Domain.Models;
 using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.ViewModels
