@@ -2,6 +2,6 @@
 {
     public interface IDeleteYouTubeViewerCommand
     {
-        Task Execute(Guid Id);
+        Task ExecuteDeleteAsync(Guid id);
     }
 }

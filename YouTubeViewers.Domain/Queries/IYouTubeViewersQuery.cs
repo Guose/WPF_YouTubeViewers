@@ -4,7 +4,7 @@ namespace YouTubeViewers.Domain.Queries
 {
     public interface IYouTubeViewersQuery
     {
-        Task<IEnumerable<YouTubeViewer>> GetAllViewers();
-        Task GetViewerById(Guid id);
+        Task<IEnumerable<YouTubeViewer>> GetAllYouTubeViewers();
+        Task<YouTubeViewer> GetYouTubeViewerById(Guid id);
     }
 }

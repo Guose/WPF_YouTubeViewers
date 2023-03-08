@@ -1,7 +1,9 @@
-﻿namespace YouTubeViewers.Domain.Commands
+﻿using YouTubeViewers.Domain.Models;
+
+namespace YouTubeViewers.Domain.Commands
 {
     public interface IUpdateYouTubeViewerCommand
     {
-        Task Execute(Guid Id);
+        Task ExecuteUpdateAsync(YouTubeViewer youTubeViewer);
     }
 }
