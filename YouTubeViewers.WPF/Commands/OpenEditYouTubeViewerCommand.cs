@@ -4,21 +4,33 @@ using YouTubeViewers.WPF.ViewModels;
 
 namespace YouTubeViewers.WPF.Commands
 {
-    internal class OpenEditYouTubeViewerCommand : CommandBase
+    public class OpenEditYouTubeViewerCommand : CommandBase
     {
-        private readonly YouTubeViewer _youTubeViewer;
-        private readonly ModalNavigationStore _modalNavigationStore;
+        private readonly YouTubeViewersListingItemViewModel _youTubeViewersListingItemViewModel;
+        private readonly YouTubeViewersStore _viewersStore;
+        private readonly ModalNavigationStore _navigationStore;
 
-        public OpenEditYouTubeViewerCommand(YouTubeViewer youTubeViewer, ModalNavigationStore modalNavigationStore)
+        public OpenEditYouTubeViewerCommand(
+            YouTubeViewersListingItemViewModel youTubeViewersListingItemViewModel, 
+            YouTubeViewersStore viewersStore, 
+            ModalNavigationStore navigationStore)
         {
-            _youTubeViewer = youTubeViewer;
-            _modalNavigationStore = modalNavigationStore;
+            _youTubeViewersListingItemViewModel = youTubeViewersListingItemViewModel;
+            _viewersStore = viewersStore;
+            _navigationStore = navigationStore;
         }
 
         public override void Execute(object? parameter)
         {
-            EditYouTubeViewerViewModel editYouTubeViewerViewModel = new EditYouTubeViewerViewModel(_youTubeViewer, _modalNavigationStore);
-            _modalNavigationStore.CurrentViewModel = editYouTubeViewerViewModel;
+            YouTubeViewer youTubeViewer = _youTubeViewersListingItemViewModel.YouTubeViewer;
+
+            if (youTubeViewer != null)
+            {
+                EditYouTubeViewerViewModel editYouTubeViewerViewModel = 
+                    new EditYouTubeViewerViewModel(youTubeViewer, _viewersStore, _navigationStore);
+
+                _navigationStore.CurrentViewModel = editYouTubeViewerViewModel;
+            }
         }
     }
 }

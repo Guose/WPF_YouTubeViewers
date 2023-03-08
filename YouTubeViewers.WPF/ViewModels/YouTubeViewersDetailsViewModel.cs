@@ -3,7 +3,7 @@ using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.ViewModels
 {
-    internal class YouTubeViewersDetailsViewModel : ViewModelBase
+    public class YouTubeViewersDetailsViewModel : ViewModelBase
     {
         private readonly SelectedYouTubeViewerStore _selectedYouTubeViewerStore;
         private YouTubeViewer? SelectedYouTubeViewer => _selectedYouTubeViewerStore?.SelectedYouTubeViewer;

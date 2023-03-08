@@ -2,10 +2,10 @@
 
 namespace YouTubeViewers.WPF.ViewModels
 {
-    internal class YouTubeViewerDetailsFormViewModel : ViewModelBase
+    public class YouTubeViewerDetailsFormViewModel : ViewModelBase
     {
-		private string? _username;
-		public string? Username
+		private string _username = string.Empty;
+		public string Username
 		{
 			get
 			{
@@ -20,7 +20,7 @@ namespace YouTubeViewers.WPF.ViewModels
 		}
 
 		private bool _isSubscribed;
-		public bool IsSubscriped
+		public bool IsSubscribed
 		{
 			get
 			{
@@ -29,7 +29,7 @@ namespace YouTubeViewers.WPF.ViewModels
 			set
 			{
 				_isSubscribed = value;
-				OnPropertyChanged(nameof(IsSubscriped));
+				OnPropertyChanged(nameof(IsSubscribed));
 			}
 		}
 
@@ -50,6 +50,7 @@ namespace YouTubeViewers.WPF.ViewModels
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
+			Username = string.Empty;
         }
 
         public bool CanSubmit => !string.IsNullOrEmpty(Username);

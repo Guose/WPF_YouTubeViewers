@@ -4,14 +4,15 @@ using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.ViewModels
 {
-    internal class AddYouTubeViewerViewModel : ViewModelBase
+    public class AddYouTubeViewerViewModel : ViewModelBase
     {
         public YouTubeViewerDetailsFormViewModel YouTubeViewerDetailsFormViewModel { get; }
 
-        public AddYouTubeViewerViewModel(ModalNavigationStore modalNavigationStore)
+        public AddYouTubeViewerViewModel(YouTubeViewersStore viewersStore, ModalNavigationStore modalNavigationStore)
         {
             ICommand? cancelCommand = new CloseModalCommand(modalNavigationStore);
-            YouTubeViewerDetailsFormViewModel = new YouTubeViewerDetailsFormViewModel(null, cancelCommand);
+            ICommand? submitCommand = new AddYouTubeViewerCommand(this, viewersStore, modalNavigationStore);
+            YouTubeViewerDetailsFormViewModel = new YouTubeViewerDetailsFormViewModel(submitCommand, cancelCommand);
         }
     }
 }

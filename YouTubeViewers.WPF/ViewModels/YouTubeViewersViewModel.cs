@@ -4,18 +4,18 @@ using YouTubeViewers.WPF.Stores;
 
 namespace YouTubeViewers.WPF.ViewModels
 {
-    internal class YouTubeViewersViewModel : ViewModelBase
+    public class YouTubeViewersViewModel : ViewModelBase
     {
         public YouTubeViewersListingViewModel ListingViewModel { get; }
         public YouTubeViewersDetailsViewModel DetailsViewModel { get; set; }
         public ICommand? AddYouTubeViewersCommand { get; }
 
-        public YouTubeViewersViewModel(SelectedYouTubeViewerStore _selectedYouTubeViewerStore, ModalNavigationStore modalNavigationStore)
+        public YouTubeViewersViewModel(YouTubeViewersStore viewersStore, SelectedYouTubeViewerStore selectedYouTubeViewerStore, ModalNavigationStore modalNavigationStore)
         {
-            ListingViewModel = new YouTubeViewersListingViewModel(_selectedYouTubeViewerStore, modalNavigationStore);
-            DetailsViewModel = new YouTubeViewersDetailsViewModel(_selectedYouTubeViewerStore);
+            ListingViewModel = new YouTubeViewersListingViewModel(viewersStore, selectedYouTubeViewerStore, modalNavigationStore);
+            DetailsViewModel = new YouTubeViewersDetailsViewModel(selectedYouTubeViewerStore);
 
-            AddYouTubeViewersCommand = new OpenAddYouTubeViewerCommand(modalNavigationStore);
+            AddYouTubeViewersCommand = new OpenAddYouTubeViewerCommand(viewersStore, modalNavigationStore);
         }
     }
 }

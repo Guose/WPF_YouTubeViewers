@@ -2,7 +2,7 @@
 
 namespace YouTubeViewers.WPF.Commands
 {
-    internal class CloseModalCommand : CommandBase
+    public class CloseModalCommand : CommandBase
     {
         private readonly ModalNavigationStore _navigationStore;
 

@@ -1,14 +1,18 @@
-﻿namespace YouTubeViewers.WPF.Models
+﻿using System;
+
+namespace YouTubeViewers.WPF.Models
 {
-    internal class YouTubeViewer
+    public class YouTubeViewer
     {
+        public Guid Id { get; }
         public string Username { get; }
         public bool IsSubscribed { get; }
         public bool IsMember { get; }
 
-        public YouTubeViewer(string user, bool subscribed, bool member)
+        public YouTubeViewer(Guid id, string username, bool subscribed, bool member)
         {
-            Username = user;
+            Id = id;
+            Username = username;
             IsSubscribed = subscribed;
             IsMember = member;
         }

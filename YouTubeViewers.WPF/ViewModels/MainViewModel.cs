@@ -2,7 +2,7 @@
 
 namespace YouTubeViewers.WPF.ViewModels
 {
-    internal class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         private readonly ModalNavigationStore _navigationStore;
 
