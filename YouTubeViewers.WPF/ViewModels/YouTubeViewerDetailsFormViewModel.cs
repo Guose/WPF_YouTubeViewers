@@ -61,8 +61,8 @@ namespace YouTubeViewers.WPF.ViewModels
 			}
         }
 
-        private string _errorMessage;
-        public string ErrorMessage
+        private string? _errorMessage;
+        public string? ErrorMessage
         {
             get
             {
