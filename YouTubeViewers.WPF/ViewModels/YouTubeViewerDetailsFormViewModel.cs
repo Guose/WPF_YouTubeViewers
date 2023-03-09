@@ -81,7 +81,7 @@ namespace YouTubeViewers.WPF.ViewModels
         public ICommand? SubmitCommand { get; set; }
         public ICommand? CancelCommand { get; set; }
 
-        public YouTubeViewerDetailsFormViewModel(ICommand? submitCommand, ICommand? cancelCommand)
+        public YouTubeViewerDetailsFormViewModel(ICommand submitCommand, ICommand cancelCommand)
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
