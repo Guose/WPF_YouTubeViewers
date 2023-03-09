@@ -9,6 +9,7 @@ using YouTubeViewers.Domain.Queries;
 using YouTubeViewers.EntityFramework;
 using YouTubeViewers.EntityFramework.Commands;
 using YouTubeViewers.EntityFramework.Queries;
+using YouTubeViewers.WPF.Extensions;
 using YouTubeViewers.WPF.Stores;
 using YouTubeViewers.WPF.ViewModels;
 
@@ -24,13 +25,9 @@ namespace YouTubeViewers.WPF
         public App()
         {
             _host = Host.CreateDefaultBuilder()
+                        .AddDbContextExtension()
                         .ConfigureServices((context, services) =>
                         {
-                            string? connectionString = context.Configuration.GetConnectionString("SQLite");
-
-                            services.AddSingleton<DbContextOptions>(new DbContextOptionsBuilder().UseSqlite(connectionString).Options);
-                            services.AddSingleton<YouTubeViewersDbContextFactory>();
-
                             services.AddSingleton<IYouTubeViewersQuery, GetAllYouTubeViewerQuery>();
                             services.AddSingleton<ICreateYouTubeViewerCommand, CreateYouTubeViewerCommand>();
                             services.AddSingleton<IUpdateYouTubeViewerCommand, UpdateYouTubeViewerCommand>();

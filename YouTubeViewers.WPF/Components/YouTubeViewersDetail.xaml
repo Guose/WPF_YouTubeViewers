@@ -49,9 +49,10 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock
-                    Grid.Row="0"
-                    FontSize="24"
-                    Text="{Binding Username}" />
+                        TextWrapping="Wrap"
+                        Grid.Row="0"
+                        FontSize="24"
+                        Text="{Binding Username}" />
 
                     <Grid Grid.Row="1" Margin="0 20 0 0">
                         <Grid.ColumnDefinitions>

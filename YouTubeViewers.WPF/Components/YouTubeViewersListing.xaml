@@ -23,6 +23,8 @@
                         CornerRadius="5"/>
 
                 <ListView 
+                    SelectionMode="Single"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                     BorderThickness="0" 
                     SelectedItem="{Binding SelectedViewerListingViewModel}" 
                     ItemsSource="{Binding ListingItemViewModel}">

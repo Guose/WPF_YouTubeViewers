@@ -8,7 +8,7 @@ namespace YouTubeViewers.WPF.ViewModels
 {
     public class YouTubeViewersListingItemViewModel : ViewModelBase
     {
-        public YouTubeViewer YouTubeViewer { get; private set; }
+        public YouTubeViewer? YouTubeViewer { get; private set; }
 
         public string Username => YouTubeViewer.Username;
 
