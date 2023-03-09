@@ -5,7 +5,7 @@ namespace YouTubeViewers.Domain.Models
     public class YouTubeViewer
     {
         public Guid Id { get; }
-        public string Username { get; }
+        public string Username { get; } = string.Empty;
         public bool IsSubscribed { get; }
         public bool IsMember { get; }
 
