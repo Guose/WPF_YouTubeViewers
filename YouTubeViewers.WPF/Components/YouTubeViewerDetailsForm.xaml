@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:YouTubeViewers.WPF.Components" xmlns:custom="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl" xmlns:viewmodels="clr-namespace:YouTubeViewers.WPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:YouTubeViewerDetailsFormViewModel}"
+             xmlns:local="clr-namespace:YouTubeViewers.WPF.Components" 
+             xmlns:custom="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl" 
+             xmlns:viewmodels="clr-namespace:YouTubeViewers.WPF.ViewModels" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:YouTubeViewerDetailsFormViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" 
+             IsVisibleChanged="UserControl_IsVisibleChanged">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
@@ -23,7 +27,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" FocusManager.FocusedElement="{Binding ElementName=txtAddViewer}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto" SharedSizeGroup="Label"/>
                     <ColumnDefinition Width="*" MaxWidth="250"/>
@@ -35,9 +39,10 @@
                         Text="Username"/>
 
                 <TextBox 
-                        Grid.Column="1"
-                        Margin="20 0 0 0"
-                        Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
+                    x:Name="txtAddViewer"                    
+                    Grid.Column="1"
+                    Margin="20 0 0 0"
+                    Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
 
             <Grid Grid.Row="1" Margin="0 20 0 0">

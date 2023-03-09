@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:YouTubeViewers.WPF.Components" 
              xmlns:custom="clr-namespace:DropdownMenuControl;assembly=DropdownMenuControl" 
              xmlns:viewmodels="clr-namespace:YouTubeViewers.WPF.ViewModels" 
-             xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
+             xmlns:loadingspinnercontrol="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl" 
+             d:DataContext="{d:DesignInstance Type=viewmodels:YouTubeViewersListingItemViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>

@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace YouTubeViewers.WPF.Components
 {
@@ -10,6 +11,17 @@ namespace YouTubeViewers.WPF.Components
         public YouTubeViewerDetailsForm()
         {
             InitializeComponent();
+
+            txtAddViewer.Focusable = true;
+            txtAddViewer.Focus();
+        }
+
+        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((sender as UserControl).IsVisible)
+            {
+                (sender as UserControl).Focus();
+            }
         }
     }
 }
