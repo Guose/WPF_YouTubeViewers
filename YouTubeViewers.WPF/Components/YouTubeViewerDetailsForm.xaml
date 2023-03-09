@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:YouTubeViewers.WPF.Components"
+             xmlns:local="clr-namespace:YouTubeViewers.WPF.Components" xmlns:custom="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl" xmlns:viewmodels="clr-namespace:YouTubeViewers.WPF.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:YouTubeViewerDetailsFormViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
@@ -82,7 +86,22 @@
             <Button 
                 Content="Cancel" 
                 Command="{Binding CancelCommand}" 
+                Margin="0 0 10 0"
                 Style="{StaticResource ButtonSecondary}"/>
+            
+            <custom:LoadingSpinner 
+                Color="Blue"
+                IsLoading="{Binding IsSubmitting}" 
+                Thickness="2" 
+                Diameter="25"/>
         </WrapPanel>
+
+        <TextBlock
+            Grid.Row="2"
+            Style="{StaticResource ErrorMessage}"
+            Margin="0 15 0 0"
+            Text="{Binding ErrorMessage}"
+            Visibility="{Binding HasErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
     </Grid>
 </UserControl>

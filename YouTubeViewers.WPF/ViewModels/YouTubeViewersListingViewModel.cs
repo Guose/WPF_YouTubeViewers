@@ -31,7 +31,7 @@ namespace YouTubeViewers.WPF.ViewModels
             }
         }
 
-        public ICommand LoadYouTubeViewersCommand { get; }
+        
 
         public YouTubeViewersListingViewModel(YouTubeViewersStore viewersStore, SelectedYouTubeViewerStore selectedYouTubeViewerStore, ModalNavigationStore navigationStore)
         {
@@ -44,8 +44,6 @@ namespace YouTubeViewers.WPF.ViewModels
             _viewersStore.YouTubeViewerAdded += ViewersStore_YouTubeViewerAdded;
             _viewersStore.YouTubeViewerUpdated += ViewersStore_YouTubeViewerUpdated;
             _viewersStore.YouTubeViewerDeleted += ViewersStore_YouTubeViewerDeleted;
-
-            LoadYouTubeViewersCommand = new LoadYouTubeViewersCommand(viewersStore);
         }
 
         protected override void Dispose()
@@ -58,14 +56,7 @@ namespace YouTubeViewers.WPF.ViewModels
             base.Dispose();
         }
 
-        public static YouTubeViewersListingViewModel LoadViewModel(YouTubeViewersStore viewersStore, SelectedYouTubeViewerStore selectedYouTubeViewerStore, ModalNavigationStore navigationStore)
-        {
-            YouTubeViewersListingViewModel viewModel = new YouTubeViewersListingViewModel(viewersStore, selectedYouTubeViewerStore, navigationStore);
-
-            viewModel.LoadYouTubeViewersCommand.Execute(viewModel);
-
-            return viewModel;
-        }
+        
 
         private void ViewersStore_YouTubeViewerDeleted(Guid id)
         {

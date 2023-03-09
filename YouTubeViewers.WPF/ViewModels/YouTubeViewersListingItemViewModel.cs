@@ -11,6 +11,38 @@ namespace YouTubeViewers.WPF.ViewModels
         public YouTubeViewer YouTubeViewer { get; private set; }
 
         public string Username => YouTubeViewer.Username;
+
+        private bool _isDeleting;
+        public bool IsDeleting
+        {
+            get
+            {
+                return _isDeleting;
+            }
+            set
+            {
+                _isDeleting = value;
+                OnPropertyChanged(nameof(IsDeleting));
+            }
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+                OnPropertyChanged(nameof(HasErrorMessage));
+            }
+        }
+
+        public bool HasErrorMessage => !string.IsNullOrEmpty(ErrorMessage);
+
         public ICommand? EditCommand { get; }
         public ICommand? DeleteCommand { get; }
 

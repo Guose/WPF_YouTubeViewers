@@ -22,14 +22,28 @@ namespace YouTubeViewers.WPF.Commands
         {
             YouTubeViewerDetailsFormViewModel formViewModel = _addYouTubeViewerViewModel.YouTubeViewerDetailsFormViewModel;
 
-            YouTubeViewer youTubeViewer = new YouTubeViewer(
-                Guid.NewGuid(),
-                formViewModel.Username,
-                formViewModel.IsSubscribed,
-                formViewModel.IsMember);
+            formViewModel.ErrorMessage = string.Empty;
 
-            await _viewersStore.CreateAsync(youTubeViewer);
-            _navigationStore.Close();
+            formViewModel.IsSubmitting = true;
+
+            try
+            {
+                
+
+                YouTubeViewer youTubeViewer = new YouTubeViewer(
+                    Guid.NewGuid(),
+                    formViewModel.Username,
+                    formViewModel.IsSubscribed,
+                    formViewModel.IsMember);
+
+                await _viewersStore.CreateAsync(youTubeViewer);
+                _navigationStore.Close();
+            }
+            catch (Exception)
+            {
+                formViewModel.ErrorMessage = "Failed to add YouTube viewer. Please try again later...";
+            }
+            finally { formViewModel.IsSubmitting = false; }
         }
     }
 }

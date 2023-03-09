@@ -4,45 +4,117 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YouTubeViewers.WPF.Views" 
-             xmlns:components="clr-namespace:YouTubeViewers.WPF.Components"
+             xmlns:components="clr-namespace:YouTubeViewers.WPF.Components" 
+             xmlns:custom="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
+        <StackPanel VerticalAlignment="Center">
+            <StackPanel.Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoading}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </StackPanel.Style>
 
-            <TextBlock Grid.Column="0"
+            <custom:LoadingSpinner 
+                Color="Blue"
+                Thickness="3" 
+                Diameter="100" 
+                IsLoading="True" />
+
+            <TextBlock 
+                Margin="0 10 0 0"
+                TextAlignment="Center"
+                Text="Loading YouTube Viewers..."/>
+        </StackPanel>
+        
+        <Grid>
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsLoading}" Value="False">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasErrorMessage}" Value="True">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <TextBlock
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Text="{Binding ErrorMessage}" 
+                    Style="{StaticResource ErrorMessage}"/>
+
+            </Grid>
+
+            <Grid>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasErrorMessage}" Value="False">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0"
                        Style="{StaticResource PageHeader}"
                        Text="YouTube Viewers"/>
-            
-            <Button 
+
+                    <Button 
                 Grid.Column="1"
                 FontSize="16"
                 Content="Add"
                 Command="{Binding AddYouTubeViewersCommand}"/>
-        </Grid>
-        <Grid Grid.Row="1" Margin="0 20 0 0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
+                </Grid>
 
-            <components:YouTubeViewersListing 
+                <Grid Grid.Row="1" Margin="0 20 0 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <components:YouTubeViewersListing 
                 Grid.Column="0" 
                 DataContext="{Binding ListingViewModel}"/>
-            <components:YouTubeViewersDetail 
+                    <components:YouTubeViewersDetail 
                 Grid.Column="1" 
                 Margin="20 0 0 0" 
                 DataContext="{Binding DetailsViewModel}"/>
+                </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

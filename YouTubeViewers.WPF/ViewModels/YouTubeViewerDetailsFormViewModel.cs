@@ -46,17 +46,47 @@ namespace YouTubeViewers.WPF.ViewModels
 				OnPropertyChanged(nameof(IsMember));
 			}
 		}
+
+		private bool _isSubmitting;
+		public bool IsSubmitting
+		{
+			get
+			{
+				return _isSubmitting;
+			}
+			set
+			{
+				_isSubmitting = value;
+				OnPropertyChanged(nameof(IsSubmitting));
+			}
+        }
+
+        private string _errorMessage;
+        public string ErrorMessage
+        {
+            get
+            {
+                return _errorMessage;
+            }
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged(nameof(ErrorMessage));
+                OnPropertyChanged(nameof(HasErrorMessage));
+            }
+        }
+
+        public bool HasErrorMessage => !string.IsNullOrEmpty(ErrorMessage);
+        public bool CanSubmit => !string.IsNullOrEmpty(Username);
+        public ICommand? SubmitCommand { get; set; }
+        public ICommand? CancelCommand { get; set; }
+
         public YouTubeViewerDetailsFormViewModel(ICommand? submitCommand, ICommand? cancelCommand)
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
 			Username = string.Empty;
         }
-
-        public bool CanSubmit => !string.IsNullOrEmpty(Username);
-
-        public ICommand? SubmitCommand { get; set; }
-        public ICommand? CancelCommand { get; set; }
 
     }
 }
