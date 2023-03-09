@@ -14,7 +14,7 @@ namespace YouTubeViewers.EntityFramework.Queries
             _dbContextFactory = dbContextFactory;
         }
 
-        public async Task<IEnumerable<YouTubeViewer>> GetAllYouTubeViewers()
+        public async Task<IEnumerable<YouTubeViewer>> GetAllYouTubeViewersAsync()
         {
             using (YouTubeViewersDbContext context = _dbContextFactory.Create())
             {
@@ -24,7 +24,7 @@ namespace YouTubeViewers.EntityFramework.Queries
             }
         }
 
-        public async Task<YouTubeViewer> GetYouTubeViewerById(Guid id)
+        public async Task<YouTubeViewer> GetYouTubeViewerByIdAsync(Guid id)
         {
             using (var context = _dbContextFactory.Create())
             {
