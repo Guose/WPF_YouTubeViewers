@@ -5,8 +5,18 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <PackageId>YouTube Viewers</PackageId>
+    <Authors>Justin Elder</Authors>
+    <Title>YouTube Viewers</Title>
+    <Product>YouTube Viewers</Product>
+    <StartupObject></StartupObject>
+    <RootNamespace>$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+    <SignAssembly>False</SignAssembly>
+    <PackageIcon>free-round-youtube-icon-vector-logo-11553541445tohp89dd6v.png</PackageIcon>
+    <AssemblyName>YouTube Viewers</AssemblyName>
+	  <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
   </PropertyGroup>
-
+	
   <ItemGroup>
     <PackageReference Include="DropdownMenu.WPF" Version="1.0.0" />
     <PackageReference Include="LoadingSpinner.WPF" Version="1.0.0" />
@@ -20,8 +30,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="free-round-youtube-icon-vector-logo-11553541445tohp89dd6v.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
