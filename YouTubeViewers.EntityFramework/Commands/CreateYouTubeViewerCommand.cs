@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using YouTubeViewers.Domain.Commands;
+﻿using YouTubeViewers.Domain.Commands;
 using YouTubeViewers.Domain.Models;
 using YouTubeViewers.EntityFramework.DTOs;
 
