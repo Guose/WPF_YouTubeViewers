@@ -4,7 +4,7 @@ using YouTubeViewers.EntityFramework.DTOs;
 
 namespace YouTubeViewers.EntityFramework.Commands
 {
-    public class UpdateYouTubeViewerCommand : IUpdateYouTubeViewerCommand
+    public class UpdateYouTubeViewerCommand : IUpdateCommand<YouTubeViewer>
     {
         private readonly YouTubeViewersDbContextFactory _dbContextFactory;
 

@@ -28,8 +28,6 @@ namespace YouTubeViewers.WPF.Commands
 
             try
             {
-                
-
                 YouTubeViewer youTubeViewer = new YouTubeViewer(
                     Guid.NewGuid(),
                     formViewModel.Username,

@@ -17,6 +17,7 @@ namespace YouTubeViewers.WPF.ViewModels
 
             ICommand? cancelCommand = new CloseModalCommand(modalNavigationStore);
             ICommand? submitCommand = new EditYouTubeViewerCommand(this, viewersStore, modalNavigationStore);
+
             YouTubeViewerDetailsFormViewModel = new YouTubeViewerDetailsFormViewModel(submitCommand, cancelCommand)
             {
                 Username = youTubeViewer.Username,

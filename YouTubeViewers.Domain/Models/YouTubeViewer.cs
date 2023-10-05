@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace YouTubeViewers.Domain.Models
+﻿namespace YouTubeViewers.Domain.Models
 {
     public class YouTubeViewer
     {
         public Guid Id { get; }
-        public string Username { get; } = string.Empty;
+        public string Username { get; }
         public bool IsSubscribed { get; }
         public bool IsMember { get; }
 

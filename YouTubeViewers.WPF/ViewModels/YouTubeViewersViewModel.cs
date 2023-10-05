@@ -8,6 +8,7 @@ namespace YouTubeViewers.WPF.ViewModels
     {
         public YouTubeViewersListingViewModel ListingViewModel { get; }
         public YouTubeViewersDetailsViewModel DetailsViewModel { get; set; }
+
         private bool _isLoading;
         public bool IsLoading
         {

@@ -8,7 +8,7 @@ namespace YouTubeViewers.EntityFramework
 
         public YouTubeViewersDbContextFactory(DbContextOptions options)
         {
-            this._options = options;
+            _options = options;
         }
 
         public YouTubeViewersDbContext Create()

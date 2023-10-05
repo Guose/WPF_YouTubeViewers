@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
-using YouTubeViewers.WPF.Commands;
 using YouTubeViewers.Domain.Models;
 using YouTubeViewers.WPF.Stores;
 using System;
@@ -29,7 +27,10 @@ namespace YouTubeViewers.WPF.ViewModels
 
         
 
-        public YouTubeViewersListingViewModel(YouTubeViewersStore viewersStore, SelectedYouTubeViewerStore selectedYouTubeViewerStore, ModalNavigationStore navigationStore)
+        public YouTubeViewersListingViewModel(
+            YouTubeViewersStore viewersStore, 
+            SelectedYouTubeViewerStore selectedYouTubeViewerStore, 
+            ModalNavigationStore navigationStore)
         {
             _viewersStore = viewersStore;
             _selectedYouTubeViewerStore = selectedYouTubeViewerStore;
@@ -46,16 +47,6 @@ namespace YouTubeViewers.WPF.ViewModels
             _listingItemViewModel.CollectionChanged += ListingItemViewModel_CollectionChanged;
         }
 
-        private void ListingItemViewModel_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            OnPropertyChanged(nameof(SelectedViewerListingViewModel));
-        }
-
-        private void SelectedYouTubeViewerStore_SelectedYouTubeViewerChanged()
-        {
-            OnPropertyChanged(nameof(SelectedViewerListingViewModel));
-        }
-
         protected override void Dispose()
         {
             _selectedYouTubeViewerStore.SelectedYouTubeViewerChanged -= SelectedYouTubeViewerStore_SelectedYouTubeViewerChanged;
@@ -70,7 +61,15 @@ namespace YouTubeViewers.WPF.ViewModels
             base.Dispose();
         }
 
-        
+        private void ListingItemViewModel_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(SelectedViewerListingViewModel));
+        }
+
+        private void SelectedYouTubeViewerStore_SelectedYouTubeViewerChanged()
+        {
+            OnPropertyChanged(nameof(SelectedViewerListingViewModel));
+        }
 
         private void ViewersStore_YouTubeViewerDeleted(Guid id)
         {

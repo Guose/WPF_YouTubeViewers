@@ -5,7 +5,7 @@ using YouTubeViewers.EntityFramework.DTOs;
 
 namespace YouTubeViewers.EntityFramework.Queries
 {
-    public class GetAllYouTubeViewerQuery : IYouTubeViewersQuery
+    public class GetAllYouTubeViewerQuery : IRetrieveQuery<YouTubeViewer>
     {
         private readonly YouTubeViewersDbContextFactory _dbContextFactory;
 
@@ -14,7 +14,7 @@ namespace YouTubeViewers.EntityFramework.Queries
             _dbContextFactory = dbContextFactory;
         }
 
-        public async Task<IEnumerable<YouTubeViewer>> GetAllYouTubeViewersAsync()
+        public async Task<IEnumerable<YouTubeViewer>> GetAllAsync()
         {
             using (YouTubeViewersDbContext context = _dbContextFactory.Create())
             {
@@ -24,7 +24,7 @@ namespace YouTubeViewers.EntityFramework.Queries
             }
         }
 
-        public async Task<YouTubeViewer> GetYouTubeViewerByIdAsync(Guid id)
+        public async Task<YouTubeViewer> GetByIdAsync(Guid id)
         {
             using (var context = _dbContextFactory.Create())
             {

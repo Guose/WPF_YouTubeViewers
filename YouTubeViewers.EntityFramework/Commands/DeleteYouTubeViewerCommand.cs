@@ -4,7 +4,7 @@ using YouTubeViewers.EntityFramework.DTOs;
 
 namespace YouTubeViewers.EntityFramework.Commands
 {
-    public class DeleteYouTubeViewerCommand : IDeleteYouTubeViewerCommand
+    public class DeleteYouTubeViewerCommand : IDeleteCommand
     {
         private readonly YouTubeViewersDbContextFactory _dbContextFactory;
 

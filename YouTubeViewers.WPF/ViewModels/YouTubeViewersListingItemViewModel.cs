@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using YouTubeViewers.WPF.Commands;
 using YouTubeViewers.Domain.Models;
 using YouTubeViewers.WPF.Stores;

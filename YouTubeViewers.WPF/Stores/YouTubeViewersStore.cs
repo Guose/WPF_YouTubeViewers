@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using YouTubeViewers.Domain.Commands;
@@ -10,10 +9,10 @@ namespace YouTubeViewers.WPF.Stores
 {
     public class YouTubeViewersStore
     {
-        private readonly IYouTubeViewersQuery _youTubeViewersQuery;
-        private readonly ICreateYouTubeViewerCommand _createYouTubeViewerCommand;
-        private readonly IUpdateYouTubeViewerCommand _updateYouTubeViewerCommand;
-        private readonly IDeleteYouTubeViewerCommand _deleteYouTubeViewerCommand;
+        private readonly IRetrieveQuery<YouTubeViewer> _youTubeViewersQuery;
+        private readonly ICreateCommand<YouTubeViewer> _createYouTubeViewerCommand;
+        private readonly IUpdateCommand<YouTubeViewer> _updateYouTubeViewerCommand;
+        private readonly IDeleteCommand _deleteYouTubeViewerCommand;
         private readonly List<YouTubeViewer> _youTubeViewersList;
 
         public IEnumerable<YouTubeViewer> YouTubeViewers => _youTubeViewersList;
@@ -24,10 +23,10 @@ namespace YouTubeViewers.WPF.Stores
         public event Action<Guid>? YouTubeViewerDeleted;
 
         public YouTubeViewersStore(
-            IYouTubeViewersQuery youTubeViewersQuery, 
-            ICreateYouTubeViewerCommand createYouTubeViewerCommand, 
-            IUpdateYouTubeViewerCommand updateYouTubeViewerCommand, 
-            IDeleteYouTubeViewerCommand deleteYouTubeViewerCommand)
+            IRetrieveQuery<YouTubeViewer> youTubeViewersQuery, 
+            ICreateCommand<YouTubeViewer> createYouTubeViewerCommand, 
+            IUpdateCommand<YouTubeViewer> updateYouTubeViewerCommand, 
+            IDeleteCommand deleteYouTubeViewerCommand)
         {
             _youTubeViewersQuery = youTubeViewersQuery;
             _createYouTubeViewerCommand = createYouTubeViewerCommand;
@@ -39,7 +38,7 @@ namespace YouTubeViewers.WPF.Stores
 
         public async Task LoadAsync()
         {
-            IEnumerable<YouTubeViewer> youTubeViewers = await _youTubeViewersQuery.GetAllYouTubeViewersAsync();
+            IEnumerable<YouTubeViewer> youTubeViewers = await _youTubeViewersQuery.GetAllAsync();
 
             _youTubeViewersList.Clear();
             _youTubeViewersList.AddRange(youTubeViewers);

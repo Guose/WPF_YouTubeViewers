@@ -7,6 +7,7 @@
         xmlns:views="clr-namespace:YouTubeViewers.WPF.Views"
         xmlns:vms="clr-namespace:YouTubeViewers.WPF.ViewModels" 
         xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
+        d:DataContext="{d:DesignInstance Type=vms:MainViewModel}"
         mc:Ignorable="d"
         Title="YouTube Viewers" 
         Height="450" 

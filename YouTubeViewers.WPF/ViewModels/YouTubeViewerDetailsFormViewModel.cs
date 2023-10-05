@@ -85,7 +85,6 @@ namespace YouTubeViewers.WPF.ViewModels
         {
             SubmitCommand = submitCommand;
             CancelCommand = cancelCommand;
-			Username = string.Empty;
         }
 
     }

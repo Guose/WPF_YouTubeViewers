@@ -1,6 +1,6 @@
 ﻿namespace YouTubeViewers.Domain.Commands
 {
-    public interface IDeleteYouTubeViewerCommand
+    public interface IDeleteCommand
     {
         Task ExecuteDeleteAsync(Guid id);
     }

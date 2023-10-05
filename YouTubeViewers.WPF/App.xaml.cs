@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Windows;
 using YouTubeViewers.Domain.Commands;
+using YouTubeViewers.Domain.Models;
 using YouTubeViewers.Domain.Queries;
 using YouTubeViewers.EntityFramework;
 using YouTubeViewers.EntityFramework.Commands;
@@ -28,19 +28,19 @@ namespace YouTubeViewers.WPF
                         .AddDbContextExtension()
                         .ConfigureServices((context, services) =>
                         {
-                            services.AddSingleton<IYouTubeViewersQuery, GetAllYouTubeViewerQuery>();
-                            services.AddSingleton<ICreateYouTubeViewerCommand, CreateYouTubeViewerCommand>();
-                            services.AddSingleton<IUpdateYouTubeViewerCommand, UpdateYouTubeViewerCommand>();
-                            services.AddSingleton<IDeleteYouTubeViewerCommand, DeleteYouTubeViewerCommand>();
+                            services.AddSingleton<IRetrieveQuery<YouTubeViewer>, GetAllYouTubeViewerQuery>();
+                            services.AddSingleton<ICreateCommand<YouTubeViewer>, CreateYouTubeViewerCommand>();
+                            services.AddSingleton<IUpdateCommand<YouTubeViewer>, UpdateYouTubeViewerCommand>();
+                            services.AddSingleton<IDeleteCommand, DeleteYouTubeViewerCommand>();
 
                             services.AddSingleton<ModalNavigationStore>();
                             services.AddSingleton<YouTubeViewersStore>();
                             services.AddSingleton<SelectedYouTubeViewerStore>();
 
-                            services.AddTransient<YouTubeViewersViewModel>(CreateYouTubeViewersViewModel);
+                            services.AddTransient(CreateYouTubeViewersViewModel);
                             services.AddSingleton<MainViewModel>();
 
-                            services.AddSingleton<MainWindow>((services) => new MainWindow()
+                            services.AddSingleton((services) => new MainWindow()
                             {
                                 DataContext = services.GetRequiredService<MainViewModel>()
                             });
