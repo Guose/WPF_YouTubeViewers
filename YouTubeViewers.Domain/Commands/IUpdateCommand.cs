@@ -1,6 +1,4 @@
-﻿using YouTubeViewers.Domain.Models;
-
-namespace YouTubeViewers.Domain.Commands
+﻿namespace YouTubeViewers.Domain.Commands
 {
     public interface IUpdateCommand<T>
     {
